@@ -1,4 +1,4 @@
-# Тестовое задание: BIV
+# Тестовое задание
 Проект сгенерирован на Angular CLI version 16.2.9.
 ## Макет:
 https://www.figma.com/file/YIgZwgAiqi7QUFOkwMJ8Tc/TZ-Front-(Copy)?type=design&node-id=0-1&mode=design&t=QMVwNpTCGqiXqy9B-0
