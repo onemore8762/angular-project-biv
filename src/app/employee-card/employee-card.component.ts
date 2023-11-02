@@ -9,9 +9,9 @@ import {IEmployee} from "../models/employees.model";
 export class EmployeeCardComponent {
   @Input() user: IEmployee
   @Input() index: number
-  @Output() removeCard = new EventEmitter<IEmployee>()
+  @Output() removeCard = new EventEmitter<number>()
 
-  remove(employee: IEmployee): void{
+  remove(employee: number): void{
     this.removeCard.emit(employee)
   }
 }

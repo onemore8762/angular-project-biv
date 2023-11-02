@@ -18,8 +18,8 @@ export class EmployeesListComponent {
     this.userList$ = store.select(selectEmployees)
   }
 
-  removeEmployee(employee: IEmployee) {
-    this.store.dispatch(removeEmployee(employee))
+  removeEmployee(id: number) {
+    this.store.dispatch(removeEmployee({id}))
     this._snackBar.open(
       'Сотрудник успешно удален',
       'X',

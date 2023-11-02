@@ -14,9 +14,9 @@ export const employeesReducer = createReducer(
     return employeesClone
   }),
 
-  on(removeEmployee, (employees,  {type, ...employee}) => {
+  on(removeEmployee, (employees,  { id}) => {
     const employeesClone: IEmployee[] = [...employees]
-    const found = employeesClone.find(entry => entry.id === employee.id)
+    const found = employeesClone.find(entry => entry.id === id)
     if (found){
       employeesClone.splice(employeesClone.indexOf(found), 1)
     }
