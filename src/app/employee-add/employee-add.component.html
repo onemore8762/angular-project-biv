@@ -1,0 +1,21 @@
+<h2 class="title">Добавить сотрудника</h2>
+<form class="form" [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input type="text" matInput formControlName="surname"/>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label>Имя</mat-label>
+        <input type="text" matInput formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Отчество</mat-label>
+        <input type="text" matInput formControlName="patronymic"/>
+    </mat-form-field>
+    <button mat-flat-button
+            class="button"
+            type="submit"
+            color="primary">
+        <span>ДОБАВИТЬ</span>
+    </button>
+</form>

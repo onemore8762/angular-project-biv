@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="table">
+    <div class="row">
+      <div>Сотрудник № {{index}}</div>
+    </div>
+    <div class="row">
+      <div class="cell">Фамилия</div>
+      <div class="cell">{{user.surname || '...'}}</div>
+    </div>
+    <div class="row">
+      <div class="cell">Имя</div>
+      <div class="cell">{{user.name || '...'}}</div>
+    </div>
+    <div class="row">
+      <div class="cell">Отчество</div>
+      <div class="cell">{{user.patronymic || '...'}}</div>
+    </div>
+  </div>
+
+  <button mat-flat-button
+          class="button"
+          type="button"
+          color="primary"
+          (click)="remove(user)"
+  ><span>УДАЛИТЬ СОТРУДНИКА</span>
+  </button>
+</div>

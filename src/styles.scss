@@ -4,13 +4,14 @@ $custom-primary: mat.define-palette(mat.$cyan-palette);
 $custom-accent: mat.define-palette(mat.$pink-palette);
 
 $custom-theme: mat.define-light-theme((
-  color: (
-    primary: $custom-primary,
-    accent: $custom-accent
-  )
+        color: (
+                primary: $custom-primary,
+                accent: $custom-accent
+        )
 ));
 
 @include mat.all-component-themes($custom-theme);
+
 
 html, body {
   height: 100%;
@@ -21,5 +22,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.title {
+  text-align: center;
+  padding: 60px 0;
+}

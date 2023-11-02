@@ -1,0 +1,11 @@
+<h2 class="title">Список сотрудников</h2>
+<div class="content" *ngFor="let user of (userList$ | async); let idx = index">
+    <app-employee-card
+            [user]="user"
+            [index]="idx + 1"
+            (removeCard)="removeEmployee($event)"
+    ></app-employee-card>
+</div>
+<div class="empty" *ngIf="!(userList$ | async)?.length">
+    Список сотрудников пуст
+</div>

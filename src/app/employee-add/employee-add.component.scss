@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 96px;
+
+  span {
+    color: white
+  }
+}
