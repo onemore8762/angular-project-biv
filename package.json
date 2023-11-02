@@ -2,10 +2,10 @@
   "name": "angular-project-biv",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve --open",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "ng serve",
+    "start:open": "ng serve --open",
+    "build:dev": "ng build",
+    "build:prod": "ng build --configuration development",
     "test": "ng test"
   },
   "private": true,

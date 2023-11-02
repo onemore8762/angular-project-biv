@@ -10,7 +10,7 @@ export const employeesReducer = createReducer(
 
   on(addEmployee, (employees, {type, ...employee}) => {
     const employeesClone = [...employees]
-    employeesClone.push({...employee, id: Math.random()})
+    employeesClone.push(employee)
     return employeesClone
   }),
 
