@@ -6,14 +6,23 @@
     <mat-form-field>
         <mat-label>Фамилия</mat-label>
         <input type="text" matInput formControlName="surname"/>
+        <mat-error *ngIf=" userForm.get('surname')?.hasError('required')">
+            Это обязательное поле
+        </mat-error>
     </mat-form-field>
     <mat-form-field >
         <mat-label>Имя</mat-label>
         <input type="text" matInput formControlName="name"/>
+        <mat-error *ngIf=" userForm.get('name')?.hasError('required')">
+            Это обязательное поле
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Отчество</mat-label>
         <input type="text" matInput formControlName="patronymic"/>
+        <mat-error *ngIf=" userForm.get('patronymic')?.hasError('required')">
+            Это обязательное поле
+        </mat-error>
     </mat-form-field>
     <button mat-flat-button
             class="button"
