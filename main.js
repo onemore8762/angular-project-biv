@@ -170,14 +170,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   EmployeeAddComponent: () => (/* binding */ EmployeeAddComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ 8849);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ 8849);
 /* harmony import */ var _store_employees_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/employees.actions */ 5032);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 1699);
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngrx/store */ 6270);
 /* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/snack-bar */ 9409);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 895);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/input */ 26);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/form-field */ 1333);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 6575);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 895);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/input */ 26);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/form-field */ 1333);
 
 
 
@@ -187,76 +188,117 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+function EmployeeAddComponent_mat_error_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " \u042D\u0442\u043E \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function EmployeeAddComponent_mat_error_12_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " \u042D\u0442\u043E \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function EmployeeAddComponent_mat_error_17_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " \u042D\u0442\u043E \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
 class EmployeeAddComponent {
   constructor(store, _snackBar) {
     this.store = store;
     this._snackBar = _snackBar;
-    this.userForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormGroup({
-      name: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormControl('', {
-        nonNullable: true
+    this.userForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroup({
+      name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', {
+        nonNullable: true,
+        validators: _angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.required
       }),
-      surname: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormControl('', {
-        nonNullable: true
+      surname: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', {
+        nonNullable: true,
+        validators: _angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.required
       }),
-      patronymic: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormControl('', {
-        nonNullable: true
+      patronymic: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', {
+        nonNullable: true,
+        validators: _angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.required
       })
     });
   }
   onSubmit() {
-    this.store.dispatch((0,_store_employees_actions__WEBPACK_IMPORTED_MODULE_0__.addEmployee)({
-      ...this.userForm.value,
-      id: Math.random() * 10
-    }));
-    this.userForm.reset();
-    this._snackBar.open('Сотрудник успешно добавлен', 'X', {
-      duration: 2000,
-      horizontalPosition: "start"
-    });
+    // Math.random() можно было использовать библу, но решил не тянуть лишнюю зависимость
+    // Понимаю что можно было использовать uuId
+    if (this.userForm.valid) {
+      this.store.dispatch((0,_store_employees_actions__WEBPACK_IMPORTED_MODULE_0__.addEmployee)({
+        ...this.userForm.value,
+        id: Math.random() * 10
+      }));
+      this.userForm.reset();
+      this._snackBar.open('Сотрудник успешно добавлен', 'X', {
+        duration: 2000,
+        horizontalPosition: "start"
+      });
+    }
   }
   static #_ = this.ɵfac = function EmployeeAddComponent_Factory(t) {
-    return new (t || EmployeeAddComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__.Store), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__.MatSnackBar));
+    return new (t || EmployeeAddComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_3__.Store), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__.MatSnackBar));
   };
-  static #_2 = this.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+  static #_2 = this.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
     type: EmployeeAddComponent,
     selectors: [["app-employee-add"]],
-    decls: 18,
-    vars: 1,
-    consts: [[1, "title"], ["novalidate", "", 1, "form", 3, "formGroup", "ngSubmit"], ["type", "text", "matInput", "", "formControlName", "surname"], ["type", "text", "matInput", "", "formControlName", "name"], ["type", "text", "matInput", "", "formControlName", "patronymic"], ["mat-flat-button", "", "type", "submit", "color", "primary", 1, "button"]],
+    decls: 21,
+    vars: 4,
+    consts: [[1, "title"], ["novalidate", "", 1, "form", 3, "formGroup", "ngSubmit"], ["type", "text", "matInput", "", "formControlName", "surname"], [4, "ngIf"], ["type", "text", "matInput", "", "formControlName", "name"], ["type", "text", "matInput", "", "formControlName", "patronymic"], ["mat-flat-button", "", "type", "submit", "color", "primary", 1, "button"]],
     template: function EmployeeAddComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "h2", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0430");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "form", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngSubmit", function EmployeeAddComponent_Template_form_ngSubmit_2_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "h2", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0430");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "form", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngSubmit", function EmployeeAddComponent_Template_form_ngSubmit_2_listener() {
           return ctx.onSubmit();
         });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "mat-form-field")(4, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5, "\u0424\u0430\u043C\u0438\u043B\u0438\u044F");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](6, "input", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "mat-form-field")(8, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, "\u0418\u043C\u044F");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](10, "input", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "mat-form-field")(12, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](14, "input", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "button", 5)(16, "span");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](17, "\u0414\u041E\u0411\u0410\u0412\u0418\u0422\u042C");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "mat-form-field")(4, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\u0424\u0430\u043C\u0438\u043B\u0438\u044F");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "input", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, EmployeeAddComponent_mat_error_7_Template, 2, 0, "mat-error", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "mat-form-field")(9, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\u0418\u043C\u044F");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](11, "input", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](12, EmployeeAddComponent_mat_error_12_Template, 2, 0, "mat-error", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "mat-form-field")(14, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](16, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](17, EmployeeAddComponent_mat_error_17_Template, 2, 0, "mat-error", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "button", 6)(19, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\u0414\u041E\u0411\u0410\u0412\u0418\u0422\u042C");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
       }
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.userForm);
+        let tmp_1_0;
+        let tmp_2_0;
+        let tmp_3_0;
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.userForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", (tmp_1_0 = ctx.userForm.get("surname")) == null ? null : tmp_1_0.hasError("required"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", (tmp_2_0 = ctx.userForm.get("name")) == null ? null : tmp_2_0.hasError("required"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", (tmp_3_0 = ctx.userForm.get("patronymic")) == null ? null : tmp_3_0.hasError("required"));
       }
     },
-    dependencies: [_angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_input__WEBPACK_IMPORTED_MODULE_6__.MatInput, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__.MatLabel, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_1__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_1__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormControlName],
+    dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_input__WEBPACK_IMPORTED_MODULE_7__.MatInput, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__.MatLabel, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__.MatError, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControlName],
     styles: [".form[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n\n.button[_ngcontent-%COMP%] {\n  width: 96px;\n}\n.button[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9hcHAvZW1wbG95ZWUtYWRkL2VtcGxveWVlLWFkZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUVBO0VBQ0UsV0FBQTtBQUNGO0FBQ0U7RUFDRSxZQUFBO0FBQ0oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9ybSB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG59XHJcblxyXG4uYnV0dG9uIHtcclxuICB3aWR0aDogOTZweDtcclxuXHJcbiAgc3BhbiB7XHJcbiAgICBjb2xvcjogd2hpdGVcclxuICB9XHJcbn1cclxuIl0sInNvdXJjZVJvb3QiOiIifQ== */"]
   });
 }
@@ -326,7 +368,7 @@ class EmployeeCardComponent {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()()();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeeCardComponent_Template_button_click_20_listener() {
-          return ctx.remove(ctx.user);
+          return ctx.remove(ctx.user.id);
         });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "span");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "\u0423\u0414\u0410\u041B\u0418\u0422\u042C \u0421\u041E\u0422\u0420\u0423\u0414\u041D\u0418\u041A\u0410");
@@ -405,8 +447,10 @@ class EmployeesListComponent {
     this._snackBar = _snackBar;
     this.userList$ = store.select(_store_employees_selectors__WEBPACK_IMPORTED_MODULE_0__.selectEmployees);
   }
-  removeEmployee(employee) {
-    this.store.dispatch((0,_store_employees_actions__WEBPACK_IMPORTED_MODULE_1__.removeEmployee)(employee));
+  removeEmployee(id) {
+    this.store.dispatch((0,_store_employees_actions__WEBPACK_IMPORTED_MODULE_1__.removeEmployee)({
+      id
+    }));
     this._snackBar.open('Сотрудник успешно удален', 'X', {
       duration: 2000,
       horizontalPosition: "start"
@@ -578,11 +622,10 @@ const employeesReducer = (0,_ngrx_store__WEBPACK_IMPORTED_MODULE_1__.createReduc
   employeesClone.push(employee);
   return employeesClone;
 }), (0,_ngrx_store__WEBPACK_IMPORTED_MODULE_1__.on)(_employees_actions__WEBPACK_IMPORTED_MODULE_0__.removeEmployee, (employees, {
-  type,
-  ...employee
+  id
 }) => {
   const employeesClone = [...employees];
-  const found = employeesClone.find(entry => entry.id === employee.id);
+  const found = employeesClone.find(entry => entry.id === id);
   if (found) {
     employeesClone.splice(employeesClone.indexOf(found), 1);
   }
